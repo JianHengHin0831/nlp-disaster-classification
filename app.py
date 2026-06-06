@@ -142,6 +142,9 @@ if st.button("Analyze Tweet", use_container_width=True):
             
             # 3. Tokenize & Predict
             inputs = tokenizer(cleaned_text, return_tensors="pt", max_length=128, truncation=True).to(DEVICE)
+
+            decoded_text = tokenizer.decode(inputs["input_ids"][0], skip_special_tokens=False)
+
             with torch.no_grad():
                 logits = model(**inputs).logits
                 probs = torch.nn.functional.softmax(logits, dim=1)[0].cpu().numpy()
@@ -165,5 +168,5 @@ if st.button("Analyze Tweet", use_container_width=True):
                 # Presentation Hack: Show the reviewer how the text was masked!
                 st.markdown("**Behind the Scenes (De-biasing)**")
                 st.info(f"**Original:** {tweet_input}")
-                st.success(f"**What the model actually sees:** {cleaned_text}")
+                st.success(f"**What the model sees:** {decoded_text}")
                 st.caption("*Notice how disaster-specific keywords are masked as 'disaster' to force the model to learn contextual semantics instead of memorizing.*")
