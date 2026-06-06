@@ -387,10 +387,10 @@ st.markdown(
     """
     <div class="hero-card">
         <div class="hero-kicker">ModernBERT + LoRA</div>
-        <h1 class="hero-title">Zero-Shot Disaster Tweet Classifier</h1>
+        <h1 class="hero-title">Disaster Tweet Classifier</h1>
         <p class="hero-body">
             This application demonstrates <strong>Cross-Domain Generalization</strong> using <strong>ModernBERT + LoRA</strong>.
-            Select the ultimate general model, or test the model's zero-shot capabilities by selecting a model that was deliberately blinded to a specific disaster during training.
+            Select the ultimate general model, or test the model's capabilities by selecting a model that was deliberately blinded to a specific disaster during training.
         </p>
     </div>
     """,
